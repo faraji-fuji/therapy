@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
 use App\Models\Service;
 use Illuminate\Http\Request;
@@ -46,14 +47,13 @@ class ServiceController extends Controller
             'image' => 'required|image',
         ]);
 
-        // dd($request);
-
         $path = request('image')->store('uploads', 'public');
 
+        // fit image
+        $image = Image::make(public_path("storage/{$path}"))->fit(1600, 900);
+        $image->save();
 
-        // dd($path);
-
-
+        // create service
         Service::create([
             'name' => $validated['name'],
             'brief_description' => $validated['brief_description'],
