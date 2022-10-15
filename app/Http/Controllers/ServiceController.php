@@ -43,9 +43,23 @@ class ServiceController extends Controller
             'name' => 'string|required',
             'brief_description' => 'string|required|max:250',
             'full_description' => 'string|required|max:250',
+            'image' => 'required|image',
         ]);
 
-        Service::create($validated);
+        // dd($request);
+
+        $path = request('image')->store('uploads', 'public');
+
+
+        // dd($path);
+
+
+        Service::create([
+            'name' => $validated['name'],
+            'brief_description' => $validated['brief_description'],
+            'full_description' => $validated['full_description'],
+            'image' => $path,
+        ]);
 
         return redirect(route('service.index'));
     }

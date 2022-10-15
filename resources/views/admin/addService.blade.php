@@ -37,23 +37,27 @@
 
                         <!-- Full Description input -->
                         <div class="form-outline mb-4">
-                            <textarea name="full_description" class="form-control" id="form4Example3" rows="4" required></textarea>
-                            <label class="form-label" for="form4Example2" style="margin-left: 0px;">Full Description</label>
+                            <textarea name="full_description" class="form-control" id="form4Example3" rows="4"></textarea>
+                            <label class="form-label" for="form4Example3" style="margin-left: 0px;">Full Description</label>
                             <div class="form-notch">
                                 <div class="form-notch-leading" style="width: 9px;"></div>
                                 <div class="form-notch-middle" style="width: 60px;"></div>
                                 <div class="form-notch-trailing"></div>
                             </div>
                         </div>
-                        <x-input-error :messages="$errors->get('name')" class="mt-2"></x-input-error>
-
+                        <!-- <x-input-error :messages="$errors->get('name')" class="mt-2"></x-input-error> -->
+                        @if ($errors->has('form4Example3'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('form4Example3') }}</strong>
+                        </span>
+                        @endif
 
                         <!-- Image Input -->
                         <label for="inputGroupFile02" class="form-label my-2 visually-hidden">Image</label>
                         <div class="input-group mb-4">
-                            <input type="hidden" name="MAX_FILE_SIZE" value="3000000">
-                            <input type="file" name="image_path" class="form-control" id="inputGroupFile02">
-                            <label class="input-group-text" for="inputGroupFile02">Upload Image</label>
+                            <!-- <input type="hidden" name="image" value="3000000"> -->
+                            <input type="file" name="image" class="form-control" id="image">
+                            <label class="input-group-text" for="image">Upload Image</label>
                         </div>
 
                         <!-- Submit button -->

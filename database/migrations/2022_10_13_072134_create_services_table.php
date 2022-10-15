@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name', 20);
             $table->string('brief_description', 50);
             $table->string('full_description', 250);
+            $table->string('image');
             $table->timestamps();
         });
     }

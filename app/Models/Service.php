@@ -18,5 +18,6 @@ class Service extends Model
         'name',
         'brief_description',
         'full_description',
+        'image',
     ];
 }
