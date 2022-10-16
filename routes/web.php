@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Landing;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ApplicationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +36,10 @@ Route::resource('/service', ServiceController::class)
     ->only(['index', 'create', 'store', 'edit', 'update', 'destroy'])
     ->middleware(['auth']);
 
+// Applications
+Route::resource('/application', ApplicationController::class)
+    ->only(['index', 'create', 'store', 'edit', 'update', 'destroy'])
+    ->middleware(['auth']);
 
 Route::any('/admin', function () {
     return view('admin.admin');

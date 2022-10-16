@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->string('nationalId', 10);
+            $table->string('proficiency', 20);
+            $table->string('motivation', 250);
+            $table->string('resume', 250);
             $table->timestamps();
         });
     }

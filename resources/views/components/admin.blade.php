@@ -32,17 +32,12 @@
                         <span>Main dashboard</span>
                     </a>
 
-                    <a href="services.php" class="list-group-item list-group-item-action py-2 ripple">
+                    <a href="{{ route('service.index') }}" class="list-group-item list-group-item-action py-2 ripple">
                         <i class="fas fa-plus fa-fw me-3"></i>
                         <span>Services</span>
                     </a>
 
-                    <a href="therapist.php" class="list-group-item list-group-item-action py-2 ripple">
-                        <i class="fas fa-plus fa-fw me-3"></i>
-                        <span>Therapists</span>
-                    </a>
-
-                    <a href="application.php" class="list-group-item list-group-item-action py-2 ripple">
+                    <a href="{{ route('application.index') }}" class="list-group-item list-group-item-action py-2 ripple">
                         <i class="fas fa-plus fa-fw me-3"></i>
                         <span>Applications</span>
                     </a>
@@ -81,7 +76,6 @@
                                 <!-- Left links -->
                                 <ul class="navbar-nav me-auto mb-2 ms-2 ps-1 ms-lg-0 ps-lg-0 mb-lg-0">
                                     <li class="nav-item"> <a class="nav-link" href="index.php" aria-controls="#picker-editor">Teletherapy</a> </li>
-                                    <!-- <li class="nav-item"> <a class="nav-link" href="" aria-controls="#picker-editor">Team</a> </li> -->
                                     <li class="nav-item"> <a class="nav-link" href="work.php" aria-controls="#picker-editor">Work</a> </li>
                                     <li class="nav-item"> <a class="nav-link" href="index.php#our-services" aria-controls="#picker-editor">Services</a> </li>
                                 </ul>
@@ -93,17 +87,25 @@
 
                             <!-- Right elements -->
                             <div class="d-flex align-items-center">
+                                @guest
                                 <a href="{{ route('login') }}">
                                     <button type="button" class="btn btn-link px-3 mb-1 me-2 " aria-controls="#picker-editor">Login</button>
                                 </a>
+
                                 <a href="{{ route('register') }}">
                                     <button type="button" class="btn btn-primary mb-1 me-lg-3 " aria-controls="#picker-editor">Sign up</button>
                                 </a>
+                                @endguest
 
-                                <a href="../logout.php">
-                                    <button type="button" class="btn btn-primary mb-1 me-lg-3 " aria-controls="#picker-editor">Logout</button>
-                                </a>
+                                @auth
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-link rounded mb-1 me-lg-3 " aria-controls="#picker-editor">Logout</button>
+                                </form>
+                                @endauth
                             </div>
+                            <!-- Right elements -->
+
                             <!-- Toggle button -->
                             <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                                 <i class="fas fa-bars"></i>
