@@ -40,7 +40,7 @@ Route::resource('/service', ServiceController::class)
 // Applications
 Route::resource('/application', ApplicationController::class)
     ->only(['index', 'create', 'store', 'edit', 'update', 'destroy'])
-    ->middleware(['auth']);
+    ->middleware(['auth', 'isAdmin']);
 
 //Therapist
 Route::resource('/therapist', TherapistController::class)

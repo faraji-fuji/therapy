@@ -56,6 +56,7 @@
                                 <li class="nav-item"> <a class="nav-link btn-link" href="{{ route('application.create') }}" aria-controls="#picker-editor">Work</a> </li>
                                 <li class="nav-item"> <a class="nav-link btn-link" href="index.php#our-services" aria-controls="#picker-editor">Services</a> </li>
                                 <li class="nav-item"> <a class="nav-link btn-link" href="index.php#contactUs" aria-controls="#picker-editor">Contact Us</a> </li>
+
                             </ul>
                             <!-- Left links -->
                         </div>
