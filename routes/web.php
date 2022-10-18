@@ -3,6 +3,7 @@
 use App\Http\Controllers\Landing;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\TherapistController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,6 +40,11 @@ Route::resource('/service', ServiceController::class)
 // Applications
 Route::resource('/application', ApplicationController::class)
     ->only(['index', 'create', 'store', 'edit', 'update', 'destroy'])
+    ->middleware(['auth']);
+
+//Therapist
+Route::resource('/therapist', TherapistController::class)
+    ->only(['store'])
     ->middleware(['auth']);
 
 Route::any('/admin', function () {

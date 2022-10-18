@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Application;
+use App\Models\Service;
 use App\View\Components\application as ComponentsApplication;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,9 @@ class ApplicationController extends Controller
      */
     public function create()
     {
-        return view('createApplication');
+        return view('createApplication', [
+            'services' => Service::all(),
+        ]);
     }
 
     /**

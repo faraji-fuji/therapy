@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('therapists', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->unique();
+            $table->foreignId('application_id');
+            $table->foreignId('service_id');
             $table->timestamps();
         });
     }

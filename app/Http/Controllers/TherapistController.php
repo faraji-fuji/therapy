@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Application;
+use App\Models\Service;
 use App\Models\Therapist;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\View\Components\application as ComponentsApplication;
 
 class TherapistController extends Controller
 {
@@ -24,7 +28,6 @@ class TherapistController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -35,7 +38,21 @@ class TherapistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        // $application = Application::find($request->input('id'));
+        // Therapist::create([
+        //     'user_id' => $application->user_id,
+        //     'application_id' => $application->id,
+        //     'service_id' => Service::where("name", "$application->proficiency")->get()->value('id'),
+        // ]);
+
+        $application = Application::find($request->input('id'));
+
+        $therapist = new Therapist;
+        $therapist->user()->associate(User::find("$application->user_id"));
+        $therapist->application()->associate($application);
+        $therapist->service()->associate(Service::where("name", "$application->proficiency")->get()->value('id'));
+        $therapist->save();
     }
 
     /**
@@ -57,7 +74,7 @@ class TherapistController extends Controller
      */
     public function edit(Therapist $therapist)
     {
-        //
+        // 
     }
 
     /**

@@ -23,12 +23,10 @@
                                 <label for="inputState3" class="form-label">What area are proficient in?</label>
                                 <select id="inputState3" class="form-select" name="proficiency">
                                     <option selected>--SELECT--</option>
-                                    <option>DEPRESSION</option>
-                                    <option>ANXIETY</option>
-                                    <option>LGBTQ+</option>
-                                    <option>GRIEF</option>
-                                    <option>MARRIAGE AND FAMILY</option>
-                                    <option>WORK</option>
+                                    @foreach($services as $service)
+                                    <option>{{ $service->name }}</option>
+                                    @endforeach
+
                                 </select>
                             </div>
 

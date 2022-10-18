@@ -20,4 +20,9 @@ class Service extends Model
         'full_description',
         'image',
     ];
+
+    public function therapists()
+    {
+        return $this->hasMany(Therapist::class);
+    }
 }

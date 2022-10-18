@@ -33,10 +33,13 @@
                 </td>
 
                 <td>
-                    <button type="button" class="btn btn-link btn-sm btn-rounded">
-                        Approve
-                    </button>
-
+                    <form action="{{ route('therapist.store') }}" method="POST">
+                        @csrf
+                        <input type="text" class="hidden" name="id" value="{{ $application->id }}">
+                        <button type="submit" class="btn btn-link btn-sm btn-rounded">
+                            Approve
+                        </button>
+                    </form>
 
                     <span>
                         <form action="{{ route('application.destroy', $application) }}" method="POST">
@@ -47,8 +50,6 @@
                             </button>
                         </form>
                     </span>
-
-
                 </td>
             </tr>
             @endforeach

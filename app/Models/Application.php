@@ -25,4 +25,9 @@ class Application extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function therapist()
+    {
+        return $this->hasOne(Therapist::class);
+    }
 }
