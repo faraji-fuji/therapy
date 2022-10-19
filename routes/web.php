@@ -3,6 +3,7 @@
 use App\Http\Controllers\Landing;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\TherapistController;
 use Illuminate\Support\Facades\Route;
 
@@ -53,5 +54,10 @@ Route::resource('/therapist', TherapistController::class)
 Route::resource('/therapist', TherapistController::class)
     ->only(['store'])
     ->middleware(['auth', 'isAdmin']);
+
+// Appointment
+Route::resource('/appointment', AppointmentController::class)
+    ->only(['index', 'create'])
+    ->middleware(['auth']);
 
 require __DIR__ . '/auth.php';
