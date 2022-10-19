@@ -17,13 +17,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('index', [
-//         'name' => 'faraji',
-//     ]);
-// });
-
-
 Route::resource('/', Landing::class)
     ->only(['index']);
 
@@ -31,24 +24,29 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// Admin Dashboard
+Route::view('/admin', 'admin.admin')
+    ->middleware('auth', 'isAdmin')
+    ->name('admin');
 
 // services
 Route::resource('/service', ServiceController::class)
     ->only(['index', 'create', 'store', 'edit', 'update', 'destroy'])
-    ->middleware(['auth']);
+    ->middleware(['auth', 'isAdmin']);
 
 // Applications
+// client
 Route::resource('/application', ApplicationController::class)
-    ->only(['index', 'create', 'store', 'edit', 'update', 'destroy'])
+    ->only(['create', 'store'])
+    ->middleware(['auth']);
+// Admin 
+Route::resource('/application', ApplicationController::class)
+    ->only(['index', 'edit', 'update', 'destroy'])
     ->middleware(['auth', 'isAdmin']);
 
 //Therapist
 Route::resource('/therapist', TherapistController::class)
     ->only(['store'])
-    ->middleware(['auth']);
-
-Route::any('/admin', function () {
-    return view('admin.admin');
-});
+    ->middleware(['auth', 'isAdmin']);
 
 require __DIR__ . '/auth.php';

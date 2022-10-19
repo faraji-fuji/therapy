@@ -27,7 +27,7 @@
             <div class="position-sticky">
                 <div class="list-group list-group-flush mx-3 mt-4">
 
-                    <a href="admin.php" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
+                    <a href="{{ route('admin') }}" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
                         <i class="fas fa-tachometer-alt fa-fw me-3"></i>
                         <span>Main dashboard</span>
                     </a>
@@ -65,7 +65,7 @@
                                 </button>
 
                                 <!-- Navbar brand -->
-                                <a class="navbar-brand ms-3" href="index.php">
+                                <a class="navbar-brand ms-3" href="{{ route('index') }}">
                                     <i class="fas fa-laptop-medical text-primary" aria-controls="#picker-editor"></i>
                                 </a>
 
@@ -75,9 +75,7 @@
 
                                 <!-- Left links -->
                                 <ul class="navbar-nav me-auto mb-2 ms-2 ps-1 ms-lg-0 ps-lg-0 mb-lg-0">
-                                    <li class="nav-item"> <a class="nav-link" href="index.php" aria-controls="#picker-editor">Teletherapy</a> </li>
-                                    <li class="nav-item"> <a class="nav-link" href="work.php" aria-controls="#picker-editor">Work</a> </li>
-                                    <li class="nav-item"> <a class="nav-link" href="index.php#our-services" aria-controls="#picker-editor">Services</a> </li>
+                                    <li class="nav-item"> <a class="nav-link" href="{{ route('index') }}" aria-controls="#picker-editor">Teletherapy</a> </li>
                                 </ul>
                                 <!-- Left links -->
 
@@ -120,7 +118,6 @@
             </section>
             <!---->
         </div>
-
     </header>
     <!--Main Navigation-->
     <!--Main layout-->
@@ -129,7 +126,6 @@
             {{ $slot }}
         </div>
     </main>
-
     <!--Main layout-->
     <!-- MDB -->
     <script type="text/javascript" src="js/mdb.min.js"></script>

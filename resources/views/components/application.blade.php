@@ -57,6 +57,11 @@
                                 <li class="nav-item"> <a class="nav-link btn-link" href="index.php#our-services" aria-controls="#picker-editor">Services</a> </li>
                                 <li class="nav-item"> <a class="nav-link btn-link" href="index.php#contactUs" aria-controls="#picker-editor">Contact Us</a> </li>
 
+                                @auth
+                                @if(Auth::user()->is_admin)
+                                <li class="nav-item"> <a class="nav-link btn-link" href="{{ route('admin') }}" aria-controls="#picker-editor">Dashboard</a> </li>
+                                @endif
+                                @endauth
                             </ul>
                             <!-- Left links -->
                         </div>
