@@ -18,7 +18,14 @@ class TherapistController extends Controller
      */
     public function index()
     {
-        //
+
+        $service_id = $_GET['service_id'];
+
+
+        return view('therapists', [
+            'therapists' => Therapist::with('user')->where('service_id', "$service_id")->get(),
+            'service' => Service::find("$service_id"),
+        ]);
     }
 
     /**

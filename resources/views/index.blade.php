@@ -62,11 +62,14 @@
                                 <p class="card-text">{{ $service->brief_description }}</p>
                             </div>
                             <div class="card-footer">
-                                <a href="">
-                                    <button class="btn btn-link">
+
+                                <form action="{{ route('therapist.index') }}" method="GET">
+                                    <input hidden name="service_id" value="{{ $service->id }}">
+                                    <button type="submit" class="btn btn-link">
                                         Find Therapist
                                     </button>
-                                </a>
+                                </form>
+
                             </div>
                         </div>
                     </div>

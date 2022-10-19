@@ -45,6 +45,11 @@ Route::resource('/application', ApplicationController::class)
     ->middleware(['auth', 'isAdmin']);
 
 //Therapist
+// client
+Route::resource('/therapist', TherapistController::class)
+    ->only(['index'])
+    ->middleware(['auth']);
+// Admin
 Route::resource('/therapist', TherapistController::class)
     ->only(['store'])
     ->middleware(['auth', 'isAdmin']);
