@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use Spatie\GoogleCalendar\Event;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+
 
 class AppointmentController extends Controller
 {
@@ -35,7 +38,19 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // get startDateTime from request input
+        $startDateTime = Carbon::createFromTimeString($request->input('date') . " " . $request->input('time'));
+
+        $event = new Event;
+
+        $event->name = "Appointment faraj with user 2";
+        $event->startDateTime = $startDateTime;
+        $event->endDateTime = $startDateTime->addHour();
+        // $event->hangoutLink = true;
+
+        // dd($event);
+        $event->save();
+        // return redirect()->back()->withMessage("Booked");
     }
 
     /**

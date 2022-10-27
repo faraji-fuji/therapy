@@ -57,7 +57,7 @@ Route::resource('/therapist', TherapistController::class)
 
 // Appointment
 Route::resource('/appointment', AppointmentController::class)
-    ->only(['index', 'create'])
+    ->only(['index', 'create', 'store'])
     ->middleware(['auth']);
 
 require __DIR__ . '/auth.php';

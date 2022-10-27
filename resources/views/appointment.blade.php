@@ -18,14 +18,15 @@
                             <div class="container  my-4">
                                 <div class="row justify-content-evenly">
                                     <div class="col-10 ">
-                                        <form class="row g-3">
+                                        <form class="row g-3" method="post" action="{{ route('appointment.store') }}">
+                                            @csrf
                                             <div class="col-md-6">
                                                 <label for="appointment_date">Date</label>
-                                                <input type="date" class="form-control bg-transparent text-dark" id="appointment_date">
+                                                <input type="date" class="form-control bg-transparent text-dark" name="date" id="appointment_date">
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="appointment_time">Time</label>
-                                                <input type="time" class="form-control bg-transparent text-dark" id="appointment_time">
+                                                <input type="time" class="form-control bg-transparent text-dark" name="time" id="appointment_time">
                                             </div>
                                             <div class="col-12">
                                                 <select class="form-select" aria-label="Default select example">
@@ -38,7 +39,6 @@
                                             <div class="col-12">
                                                 <button type="submit" class="btn btn-primary">Book Appointment</button>
                                             </div>
-                                            <div></div>
                                         </form>
                                     </div>
                                 </div>
