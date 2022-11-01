@@ -17,8 +17,14 @@ return new class extends Migration
             $table->id();
             $table->foreignId('therapist_id');
             $table->foreignId('user_id');
-            $table->date('date');
-            $table->string('status');
+            $table->foreignId('service_id');
+
+            // event
+            $table->string('name');
+            $table->string('description');
+            $table->date('startDateTime');
+            $table->date('endDateTime');
+
             $table->timestamps();
         });
     }

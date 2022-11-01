@@ -18,6 +18,8 @@
     <!-- Scripts -->
     @vite(['resources/css/mdb.min.css', 'resources/js/mdb.min.js'])
 
+
+
     <!-- Custom styles -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
 
@@ -114,6 +116,13 @@
         </footer>
     </div>
     <!-- Section: Footer -->
+
+    <!-- google calendar api custom script -->
+    <!-- @vite(['resources/js/googleCalendarApi.js']) -->
+
+    <!-- google calendar api scripts -->
+    <!-- <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script> -->
+    <!-- <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script> -->
 </body>
 
 </html>

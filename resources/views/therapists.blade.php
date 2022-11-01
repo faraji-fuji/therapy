@@ -42,7 +42,9 @@
                                             </div>
 
                                             <form action="{{ route('appointment.create') }}" method="get">
-
+                                                <!-- send therapist user id and therapist id to appointment.create -->
+                                                <input hidden type="text" value="{{ $therapist->user->id }}" name="therapist_user_id">
+                                                <input hidden type="text" value="{{ $therapist->id }}" name="therapist_id">
                                                 <button type="submit" class="btn btn-primary btn-rounded  btn-sm"><i class="far fa-clock me-2"></i>Book now</button>
                                             </form>
                                         </div>

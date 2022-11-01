@@ -21,7 +21,6 @@ class TherapistController extends Controller
 
         $service_id = $_GET['service_id'];
 
-
         return view('therapists', [
             'therapists' => Therapist::with('user')->where('service_id', "$service_id")->get(),
             'service' => Service::find("$service_id"),

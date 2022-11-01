@@ -20,6 +20,12 @@
                                     <div class="col-10 ">
                                         <form class="row g-3" method="post" action="{{ route('appointment.store') }}">
                                             @csrf
+                                            <!-- send therapist user id and therapist id to appointment.store -->
+                                            <input hidden type="text" name="therapist_user_id" value="{{ $therapist_user_id }}">
+                                            <input hidden type="text" name="therapist_id" value="{{ $therapist_id }}">
+
+
+
                                             <div class="col-md-6">
                                                 <label for="appointment_date">Date</label>
                                                 <input type="date" class="form-control bg-transparent text-dark" name="date" id="appointment_date">
