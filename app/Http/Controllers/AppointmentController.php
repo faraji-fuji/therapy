@@ -20,7 +20,9 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        return view('appointment');
+        // return view('appointment');
+
+        dd("appointment index");
     }
 
     /**
@@ -44,12 +46,6 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        // validate user input
-        $validated = $request->validate([
-            'time' => 'required',
-            'date' => 'required',
-        ]);
-
         // fetch client id, email and name
         $user_id = $request->user()->id;
         $user_email = $request->user()->email;
@@ -98,7 +94,7 @@ class AppointmentController extends Controller
         $event->save();
 
         // redirect to previous page
-        return redirect()->back();
+        return redirect()->back()->with('status', "Appointment Is Successful");
     }
 
     /**

@@ -47,6 +47,8 @@
                                                 <input hidden type="text" value="{{ $therapist->id }}" name="therapist_id">
                                                 <button type="submit" class="btn btn-primary btn-rounded  btn-sm"><i class="far fa-clock me-2"></i>Book now</button>
                                             </form>
+
+
                                         </div>
                                     </div>
                                 </div>

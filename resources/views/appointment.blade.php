@@ -8,6 +8,9 @@
                 <!-- Background image -->
                 <div class="p-5 text-center bg-image" style="background-image: url('/storage/images/toa-heftiba-6fTc40ncUd4-unsplash.jpg'); height: 300px; background-size: cover; background-position: 50% 50%; background-color: rgba(0, 0, 0, 0);" aria-controls="#picker-editor"></div>
                 <!-- Background image -->
+
+                <!-- fail message -->
+
                 <div class="container">
                     <div class="card mx-4 mx-md-5 text-center shadow-5-strong" style=" margin-top: -150px; background: hsla(0, 0%, 100%, 0.3); backdrop-filter: blur(30px); ">
                         <div class="card-header">
@@ -18,13 +21,12 @@
                             <div class="container  my-4">
                                 <div class="row justify-content-evenly">
                                     <div class="col-10 ">
-                                        <form class="row g-3" method="post" action="{{ route('appointment.store') }}">
+
+                                        <form class="row g-3" method="post" action="{{ route('payment.store') }}">
                                             @csrf
                                             <!-- send therapist user id and therapist id to appointment.store -->
                                             <input hidden type="text" name="therapist_user_id" value="{{ $therapist_user_id }}">
                                             <input hidden type="text" name="therapist_id" value="{{ $therapist_id }}">
-
-
 
                                             <div class="col-md-6">
                                                 <label for="appointment_date">Date</label>
@@ -42,10 +44,30 @@
                                                     <option value="3">Paypal</option>
                                                 </select>
                                             </div>
+
+                                            <div class="col-12">
+                                                <label for="phoneNumber"></label>
+                                                <input type="tel" name="phoneNumber" id="phoneNumber" class="form-control bg-transparent text-dark">
+                                            </div>
+
                                             <div class="col-12">
                                                 <button type="submit" class="btn btn-primary">Book Appointment</button>
                                             </div>
                                         </form>
+
+                                        <!-- success message -->
+                                        @if (session('statusFail'))
+                                        <div class="alert alert-danger">
+                                            {{ session('statusFail')}}
+                                        </div>
+                                        @endif
+
+                                        <!-- fail message -->
+                                        @if (session('statusSuccess'))
+                                        <div class="alert alert-success">
+                                            {{ session('statusSuccess')}}
+                                        </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
