@@ -13,16 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::create('payment_results', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
 
-            // api response
+            // paymeny results
             $table->string('merchantRequestID');
             $table->string('checkoutRequestID');
-            $table->string('responseCode');
-            $table->string('responseDescription');
-            $table->string('customerMessage');
+            $table->string('resultCode');
+            $table->string('resultDescription');
+            $table->string('amount');
+            $table->string('mpesaReceiptNumber');
+            $table->string('transactionDate');
+            $table->string('phoneNumber');
 
             $table->timestamps();
         });
@@ -35,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('payment_results');
     }
 };

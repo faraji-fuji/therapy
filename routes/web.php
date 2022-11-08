@@ -5,6 +5,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PaymentResultController;
 use App\Http\Controllers\TherapistController;
 use Illuminate\Support\Facades\Route;
 
@@ -66,6 +67,9 @@ Route::resource('/payment', PaymentController::class)
     ->only(['store'])
     ->middleware(['auth']);
 
+// Payment Result
+Route::resource('/result', PaymentResultController::class)
+    ->only(['index', 'store']);
 
 // redirect
 // Route::post('/appoint', function () {

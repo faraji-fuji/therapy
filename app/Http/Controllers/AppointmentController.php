@@ -21,7 +21,6 @@ class AppointmentController extends Controller
     public function index()
     {
         // return view('appointment');
-
         dd("appointment index");
     }
 
@@ -56,13 +55,13 @@ class AppointmentController extends Controller
         $therapist_name = User::find($therapist_user_id)->name;
         $therapist_email = User::find($therapist_user_id)->email;
 
-        // fetch get service name
+        // fetch service name
         $therapist_id = $request->input('therapist_id');
         $service_id = Therapist::find($therapist_id)->service_id;
         $service_name = Service::find($service_id)->name;
 
         // create event object
-        $event = new Event;
+        // $event = new Event;
 
         // define event properties
         $name = "Appointment";
@@ -71,10 +70,10 @@ class AppointmentController extends Controller
         $endDateTime = Carbon::createFromTimeString($request->input('date') . " " . $request->input('time'))->addHour();
 
         // set event properties
-        $event->name = $name;
-        $event->description = $description;
-        $event->startDateTime = $startDateTime;
-        $event->endDateTime = $endDateTime;
+        // $event->name = $name;
+        // $event->description = $description;
+        // $event->startDateTime = $startDateTime;
+        // $event->endDateTime = $endDateTime;
         // $event->addAttendee(['email' => 'farajiombonya@gmail.com']);
 
         // save event in db
@@ -91,7 +90,7 @@ class AppointmentController extends Controller
         ]);
 
         // save event in google calendar
-        $event->save();
+        // $event->save();
 
         // redirect to previous page
         return redirect()->back()->with('status', "Appointment Is Successful");

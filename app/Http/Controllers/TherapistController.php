@@ -44,14 +44,6 @@ class TherapistController extends Controller
      */
     public function store(Request $request)
     {
-
-        // $application = Application::find($request->input('id'));
-        // Therapist::create([
-        //     'user_id' => $application->user_id,
-        //     'application_id' => $application->id,
-        //     'service_id' => Service::where("name", "$application->proficiency")->get()->value('id'),
-        // ]);
-
         $application = Application::find($request->input('id'));
 
         $therapist = new Therapist;
@@ -59,6 +51,8 @@ class TherapistController extends Controller
         $therapist->application()->associate($application);
         $therapist->service()->associate(Service::where("name", "$application->proficiency")->get()->value('id'));
         $therapist->save();
+
+        return redirect()->back();
     }
 
     /**

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Payment extends Model
+class PaymentResult extends Model
 {
     use HasFactory;
 
@@ -16,10 +16,14 @@ class Payment extends Model
      */
     protected $fillable = [
         'user_id',
+        // payment results
         'merchantRequestID',
         'checkoutRequestID',
-        'responseCode',
-        'responseDescription',
-        'customerMessage',
+        'resultCode',
+        'resultDescription',
+        'amount',
+        'mpesaReceiptNumber',
+        'transactionDate',
+        'phoneNumber',
     ];
 }

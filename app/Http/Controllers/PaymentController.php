@@ -41,7 +41,8 @@ class PaymentController extends Controller
         // validate user input
         $validated = $request->validate([
             'time' => 'required',
-            'date' => 'required',
+            'date' => 'required|date',
+            'phoneNumber' => 'required|numeric|digits:12',
         ]);
 
         // daraja authorization api
@@ -59,10 +60,14 @@ class PaymentController extends Controller
         $timeStamp = str_replace(":", "", $timeStamp);
         $timeStamp = str_replace("-", "", $timeStamp);
         $timeStamp = str_replace(" ", "", $timeStamp);
+
         // geneate password
         $BusinessShortCode = 174379;
         $passkey = "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919";
         $password = base64_encode($BusinessShortCode . $passkey . $timeStamp);
+
+        //fetch phone number
+        $phoneNumber = $request->input('phoneNumber');
 
         // create request and save response
         $response = Http::withHeaders([
@@ -74,22 +79,42 @@ class PaymentController extends Controller
             "Timestamp" => "$timeStamp",
             "TransactionType" => "CustomerPayBillOnline",
             "Amount" => 1,
-            "PartyA" => 254708374149,
+            "PartyA" => $phoneNumber,
             "PartyB" => 174379,
-            "PhoneNumber" => 254708374149,
-            "CallBackURL" => "https://mydomain.com/path",
-            "AccountReference" => "CompanyXLTD",
-            "TransactionDesc" => "Payment of X"
+            "PhoneNumber" => $phoneNumber,
+            "CallBackURL" => "https://polite-moose-tan-154-159-237-115.loca.lt/result",
+            "AccountReference" => "Therapy",
+            "TransactionDesc" => "Payment of Therapy Services"
         ]);
-
-        dd($response->object());
 
         // proceed to store appointment of response code is okay
         if (isset($response->object()->ResponseCode)) {
-            $appo = new AppointmentController;
-            return $appo->store($request);
+            // create a response object
+            $apiResponse = $response->object();
+
+            // store oject properties in variables
+            $merchantRequestID = $apiResponse->MerchantRequestID;
+            $checkoutRequestID = $apiResponse->CheckoutRequestID;
+            $responseCode = $apiResponse->ResponseCode;
+            $responseDescription = $apiResponse->ResponseDescription;
+            $customerMessage = $apiResponse->CustomerMessage;
+
+            // store api response in database
+            Payment::create([
+                'user_id' => $request->user()->id,
+                'merchantRequestID' => $merchantRequestID,
+                'checkoutRequestID' => $checkoutRequestID,
+                'responseCode' => $responseCode,
+                'responseDescription' => $responseDescription,
+                'customerMessage' => $customerMessage,
+            ]);
+
+            $appointmentController = new AppointmentController;
+            return $appointmentController->store($request);
+
+            // return redirect()->back()->with('statusSuccess', 'Payment Initialized succesfuly. Enter your pin to confirm. Your session will be booked after the payment is confirmed');
         } else {
-            return redirect()->back()->with('status', 'Failed to finalize payment.');
+            return redirect()->back()->with('statusFail', 'Failed to initialize payment.');
         }
     }
 
