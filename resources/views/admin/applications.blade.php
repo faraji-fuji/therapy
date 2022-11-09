@@ -8,7 +8,6 @@
                 <th>Email Address</th>
                 <th>Motivation</th>
                 <th>Resume</th>
-
                 <th>Actions</th>
             </tr>
         </thead>
@@ -19,19 +18,15 @@
                 <td>
                     <p class="fw-bold mb-1">{{ $application->user->name }}</p>
                 </td>
-
                 <td>{{ $application->user->email }}</td>
                 <td>{{ $application->motivation }}</td>
                 <td>
-
-
                     <a href="/storage/{{ $application->resume }}">
                         <button class="btn btn-link">
                             download
                         </button>
                     </a>
                 </td>
-
                 <td>
                     <form action="{{ route('therapist.store') }}" method="POST">
                         @csrf
@@ -53,11 +48,8 @@
                 </td>
             </tr>
             @endforeach
-
-
         </tbody>
     </table>
-
     <div>
         <!-- <a href="{{ route('application.create') }}">
             <button type="submit" name="add" class="btn btn-outline-primary btn" aria-controls="#picker-editor"> ADD application</button>

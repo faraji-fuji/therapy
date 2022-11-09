@@ -12,16 +12,13 @@
             </tr>
         </thead>
         <tbody>
-
             @foreach ($services as $service)
             <tr>
                 <td>
                     <p class="fw-bold mb-1">{{ $service->name }}</p>
                 </td>
-
                 <td>{{ $service->brief_description }}</td>
                 <td>{{ $service->full_description }}</td>
-
                 <td>
                     <span>
                         <a href="{{ route('service.edit', $service) }}">
@@ -30,8 +27,6 @@
                             </button>
                         </a>
                     </span>
-
-
                     <span>
                         <form action="{{ route('service.destroy', $service) }}" method="POST">
                             @csrf
@@ -41,16 +36,11 @@
                             </button>
                         </form>
                     </span>
-
-
                 </td>
             </tr>
             @endforeach
-
-
         </tbody>
     </table>
-
     <div>
         <a href="{{ route('service.create') }}">
             <button type="submit" name="add" class="btn btn-outline-primary btn" aria-controls="#picker-editor"> ADD SERVICE</button>

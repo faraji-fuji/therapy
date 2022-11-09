@@ -23,7 +23,6 @@
                         </div>
                         <x-input-error :messages="$errors->get('name')" class="mt-2"></x-input-error>
 
-
                         <!-- Brief Description input -->
                         <div class="form-outline mb-4">
                             <textarea name="brief_description" class="form-control" id="form4Example2" rows="2" required> {{ old('brief_description',  $service->brief_description) }}</textarea>
@@ -48,7 +47,6 @@
                         </div>
                         <x-input-error :messages="$errors->get('name')" class="mt-2"></x-input-error>
 
-
                         <!-- Image Input -->
                         <label for="inputGroupFile02" class="form-label my-2 visually-hidden">Image</label>
                         <div class="input-group mb-4">
@@ -58,15 +56,12 @@
                         </div>
 
                         <!-- Submit button -->
-
                         <button type="submit" name="add" class="btn btn-primary btn" aria-controls="#picker-editor">Save</button>
 
                         <a href="{{ route('service.index') }}">
                             <button type="button" name="Cancel" class="btn btn-primary btn" aria-controls="#picker-editor">Cancel</button>
                         </a>
-
                     </form>
-
                 </div>
             </div>
         </div>
