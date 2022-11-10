@@ -8,6 +8,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentResultController;
 use App\Http\Controllers\TherapistController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Service;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,12 +21,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/', Landing::class)
-    ->only(['index']);
+/**
+ * Root route
+ * 
+ * return index view with relevant data
+ */
+Route::get('/', function () {
+    return view('index', ['services' => Service::all(),]);
+})->name('index');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
 // Admin Dashboard
 Route::view('/admin', 'admin.admin')
