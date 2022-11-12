@@ -25,4 +25,9 @@ class Service extends Model
     {
         return $this->hasMany(Therapist::class);
     }
+
+    public function testimonial()
+    {
+        return $this->hasOne(Testimonial::class);
+    }
 }

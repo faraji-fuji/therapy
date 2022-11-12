@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\Landing;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentResultController;
+use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\TherapistController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Service;
+use App\Models\Testimonial;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,10 @@ use App\Models\Service;
  * return index view with relevant data
  */
 Route::get('/', function () {
-    return view('index', ['services' => Service::all(),]);
+    return view('index', [
+        'services' => Service::all(),
+        'testimonials' => Testimonial::orderBY('created_at')->take(3)->get(),
+    ]);
 })->name('index');
 
 
@@ -37,7 +41,9 @@ Route::get('/dashboard', function () {
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-// Admin Dashboard
+/**
+ * Admin Dashboard
+ */
 Route::view('/admin', 'admin.admin')
     ->middleware('auth', 'isAdmin')
     ->name('admin');
@@ -47,43 +53,64 @@ Route::resource('/service', ServiceController::class)
     ->only(['index', 'create', 'store', 'edit', 'update', 'destroy'])
     ->middleware(['auth', 'isAdmin']);
 
-// Applications
-// client
+/**
+ * Applications
+ */
+// client routes
 Route::resource('/application', ApplicationController::class)
     ->only(['create', 'store'])
     ->middleware(['auth']);
-// Admin 
+// Admin routes
 Route::resource('/application', ApplicationController::class)
     ->only(['index', 'edit', 'update', 'destroy'])
     ->middleware(['auth', 'isAdmin']);
 
-//Therapist
-// client
+/**
+ * Therapist
+ */
+// client routes
 Route::resource('/therapist', TherapistController::class)
     ->only(['index'])
     ->middleware(['auth']);
-// Admin
+// Admin routes
 Route::resource('/therapist', TherapistController::class)
     ->only(['store'])
     ->middleware(['auth', 'isAdmin']);
 
-// Appointment
+/**
+ *  Appointment
+ */
 Route::resource('/appointment', AppointmentController::class)
     ->only(['index', 'create', 'store'])
     ->middleware(['auth']);
 
-// Payment
+/**
+ * Payment
+ */
 Route::resource('/payment', PaymentController::class)
     ->only(['store'])
     ->middleware(['auth']);
 
-// Payment Result
+/**
+ * Payment Result
+ * 
+ * Call back route for daraja mpesa express api
+ */
 Route::resource('/result', PaymentResultController::class)
     ->only(['index', 'store']);
 
-// redirect
-// Route::post('/appoint', function () {
-//     return redirect('/appointment@store');
-// })->name("appoint");
+/**
+ * Testimonial
+ */
+Route::resource('/testimonial', TestimonialController::class)
+    ->only(['create', 'store'])
+    ->middleware(['auth']);
+
+/**
+ * client profile
+ */
+Route::view('/profile', 'client.show')
+    ->middleware(['auth'])
+    ->name('profile');
 
 require __DIR__ . '/auth.php';

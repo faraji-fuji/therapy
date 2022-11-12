@@ -15,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('service_id');
+
+            // testimonial
+            $table->string('customUsername');
+            $table->string('testimonial');
+            $table->string('avatar');
+
             $table->timestamps();
         });
     }

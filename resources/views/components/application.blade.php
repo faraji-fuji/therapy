@@ -18,86 +18,74 @@
     <!-- Scripts -->
     @vite(['resources/css/mdb.min.css', 'resources/js/mdb.min.js'])
 
-
-
     <!-- Custom styles -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
-
     <title>Teletherapy</title>
 </head>
 
-<body>
-    <div style="position: relative;" data-draggable="true">
-        <!---->
-        <!---->
-        <section draggable="false" class="overflow-hidden pt-0" data-v-271253ee="">
-            <section class="">
+<body class="m-0 p-0">
+    <section class=" pt-0">
 
-                <!-- Navbar -->
-                <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm gradient-custom">
-                    <!-- Container wrapper -->
-                    <div class="container-fluid">
-                        <div class="d-flex">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm gradient-custom">
+            <!-- Container wrapper -->
+            <div class="container-fluid">
+                <div class="d-flex">
 
-                            <!-- Toggle button -->
-                            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <i class="fas fa-bars"></i>
-                            </button>
+                    <!-- Toggle button -->
+                    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-bars"></i>
+                    </button>
 
-                            <!-- Navbar brand -->
-                            <a class="navbar-brand ms-3" href="{{ route('index') }}">
-                                <i class="fas fa-laptop-medical text-primary" aria-controls="#picker-editor"></i>
-                            </a>
-                        </div>
-                        <!-- Collapsible wrapper -->
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Navbar brand -->
+                    <a class="navbar-brand ms-3" href="{{ route('index') }}">
+                        <i class="fas fa-laptop-medical text-primary" aria-controls="#picker-editor"></i>
+                    </a>
+                </div>
+                <!-- Collapsible wrapper -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                            <!-- Left links -->
-                            <ul class="navbar-nav me-auto mb-2 ms-2 ps-1 ms-lg-0 ps-lg-0 mb-lg-0">
-                                <li class="nav-item"> <a class="nav-link btn-link" href="{{ route('index') }}" aria-controls="#picker-editor">Teletherapy</a> </li>
-                                <li class="nav-item"> <a class="nav-link btn-link" href="{{ route('application.create') }}" aria-controls="#picker-editor">Work</a> </li>
-                                <li class="nav-item"> <a class="nav-link btn-link" href="index.php#our-services" aria-controls="#picker-editor">Services</a> </li>
-                                <li class="nav-item"> <a class="nav-link btn-link" href="index.php#contactUs" aria-controls="#picker-editor">Contact Us</a> </li>
+                    <!-- Left links -->
+                    <ul class="navbar-nav me-auto mb-2 ms-2 ps-1 ms-lg-0 ps-lg-0 mb-lg-0">
+                        <li class="nav-item"> <a class="nav-link btn-link" href="{{ route('index') }}" aria-controls="#picker-editor">Teletherapy</a> </li>
+                        <li class="nav-item"> <a class="nav-link btn-link" href="{{ route('application.create') }}" aria-controls="#picker-editor">Work</a> </li>
+                        <li class="nav-item"> <a class="nav-link btn-link" href="index.php#our-services" aria-controls="#picker-editor">Services</a> </li>
+                        <li class="nav-item"> <a class="nav-link btn-link" href="index.php#contactUs" aria-controls="#picker-editor">Contact Us</a> </li>
+                        @auth
+                        <li class="nav-item"> <a class="nav-link btn-link" href="{{ route('profile') }}" aria-controls="#picker-editor">My Profile</a> </li>
 
-                                @auth
-                                @if(Auth::user()->is_admin)
-                                <li class="nav-item"> <a class="nav-link btn-link" href="{{ route('admin') }}" aria-controls="#picker-editor">Dashboard</a> </li>
-                                @endif
-                                @endauth
-                            </ul>
-                            <!-- Left links -->
-                        </div>
-                        <!-- Collapsible wrapper -->
+                        @if(Auth::user()->is_admin)
+                        <li class="nav-item"> <a class="nav-link btn-link" href="{{ route('admin') }}" aria-controls="#picker-editor">Dashboard</a> </li>
 
-                        <!-- Right elements -->
-                        <div class="d-flex align-items-center">
-                            @guest
-                            <a href="{{ route('login') }}">
-                                <button type="button" class="btn btn-link px-3 mb-1 me-2 " aria-controls="#picker-editor">Login</button>
-                            </a>
+                        @endif
+                        @endauth
+                    </ul>
+                    <!-- Left links -->
+                </div>
+                <!-- Collapsible wrapper -->
 
-                            <a href="{{ route('register') }}">
-                                <button type="button" class="btn btn-primary mb-1 me-lg-3 " aria-controls="#picker-editor">Sign up</button>
-                            </a>
-                            @endguest
+                <!-- Right elements -->
+                <div class="d-flex align-items-center">
+                    <!-- Display links if user is guest -->
+                    @guest
+                    <a href="{{ route('login') }}"><button type="button" class="btn btn-link px-3 mb-1 me-2 " aria-controls="#picker-editor">Login</button></a>
+                    <a href="{{ route('register') }}"><button type="button" class="btn btn-primary mb-1 me-lg-3 " aria-controls="#picker-editor">Sign up</button></a>
+                    @endguest
 
-                            @auth
-                            <form action="{{ route('logout') }}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-link rounded mb-1 me-lg-3 " aria-controls="#picker-editor">Logout</button>
-                            </form>
-                            @endauth
-                        </div>
-                        <!-- Right elements -->
-
-                    </div>
-                    <!-- Container wrapper -->
-                </nav>
-                <!-- Navbar -->
-            </section>
-        </section>
-        <!---->
-    </div>
+                    <!-- Display if user is authenticated -->
+                    @auth
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-link rounded mb-1 me-lg-3 " aria-controls="#picker-editor">Logout</button>
+                    </form>
+                    @endauth
+                </div>
+                <!-- Right elements -->
+            </div>
+            <!-- Container wrapper -->
+        </nav>
+        <!-- Navbar -->
+    </section>
     <main>
         {{ $slot }}
     </main>

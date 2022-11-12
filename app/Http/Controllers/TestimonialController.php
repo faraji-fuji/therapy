@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Intervention\Image\Facades\Image;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
+use App\Models\Service;
 
 class TestimonialController extends Controller
 {
@@ -24,7 +26,10 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        //
+        return view('testimonial.create', [
+            'services' => Service::all(),
+            'user' => auth()->user(),
+        ]);
     }
 
     /**
@@ -35,7 +40,31 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validate request
+        $validated = $request->validate([
+            'service_id' => 'string|required',
+            'customUsername' => 'string|required',
+            'testimonial' => 'string|required',
+            'avatar' => 'required',
+        ]);
+
+        // store avatar file
+        $path = request('avatar')->store('testimonialAvatar', 'public');
+
+        // fit avatar
+        $image = Image::make(public_path("storage/{$path}"))->fit(400, 400);
+        $image->save();
+
+        // store request
+        Testimonial::create([
+            'user_id' => $request->user()->id,
+            'service_id' => $validated['service_id'],
+            'customUsername' => $validated['customUsername'],
+            'testimonial' => $validated['testimonial'],
+            'avatar' => $path,
+        ]);
+
+        return redirect(route('profile'));
     }
 
     /**
