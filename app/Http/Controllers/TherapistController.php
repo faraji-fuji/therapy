@@ -6,6 +6,7 @@ use App\Models\Application;
 use App\Models\Service;
 use App\Models\Therapist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\View\Components\application as ComponentsApplication;
 
@@ -51,6 +52,11 @@ class TherapistController extends Controller
         $therapist->application()->associate($application);
         $therapist->service()->associate(Service::where("name", "$application->proficiency")->get()->value('id'));
         $therapist->save();
+
+        // update application status
+        DB::table('applications')->where('id', $request->input('id'))->update([
+            'status' => '1',
+        ]);
 
         return redirect()->back();
     }

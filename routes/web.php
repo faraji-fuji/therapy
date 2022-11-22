@@ -3,6 +3,7 @@
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentResultController;
 use App\Http\Controllers\TestimonialController;
@@ -112,5 +113,11 @@ Route::resource('/testimonial', TestimonialController::class)
 Route::view('/profile', 'client.show')
     ->middleware(['auth'])
     ->name('profile');
+
+/**
+ * Contact us
+ */
+Route::resource('/message', MessageController::class)
+    ->only(['store']);
 
 require __DIR__ . '/auth.php';

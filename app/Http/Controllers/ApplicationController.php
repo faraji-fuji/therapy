@@ -17,7 +17,7 @@ class ApplicationController extends Controller
     public function index()
     {
         return view('admin.applications', [
-            'applications' => Application::all(),
+            'applications' => Application::where('status', '0')->get(),
         ]);
     }
 

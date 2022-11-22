@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
@@ -20,6 +21,10 @@ return new class extends Migration
             $table->string('proficiency', 20);
             $table->string('motivation', 250);
             $table->string('resume', 250);
+            // status codes
+            // 0: new
+            // 1: approved
+            $table->string('status')->nullable()->default("0");
             $table->timestamps();
         });
     }

@@ -12,7 +12,6 @@
             </tr>
         </thead>
         <tbody>
-
             @foreach ($applications as $application)
             <tr>
                 <td>
@@ -50,9 +49,4 @@
             @endforeach
         </tbody>
     </table>
-    <div>
-        <!-- <a href="{{ route('application.create') }}">
-            <button type="submit" name="add" class="btn btn-outline-primary btn" aria-controls="#picker-editor"> ADD application</button>
-        </a> -->
-    </div>
 </x-admin>
