@@ -3,6 +3,7 @@
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentResultController;
@@ -45,9 +46,9 @@ Route::get('/dashboard', function () {
 /**
  * Admin Dashboard
  */
-Route::view('/admin', 'admin.admin')
-    ->middleware('auth', 'isAdmin')
-    ->name('admin');
+Route::resource('/admin', DashboardController::class)
+    ->only(['index'])
+    ->middleware(['auth', 'isAdmin']);
 
 // services
 Route::resource('/service', ServiceController::class)
@@ -119,5 +120,11 @@ Route::view('/profile', 'client.show')
  */
 Route::resource('/message', MessageController::class)
     ->only(['store']);
+
+/**
+ * Dashboard Stats
+ */
+Route::resource('/stats', DashboardController::class)
+    ->only(['index']);
 
 require __DIR__ . '/auth.php';

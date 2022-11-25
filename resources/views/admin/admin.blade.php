@@ -16,7 +16,7 @@
                                 </div>
                             </div>
                             <div class="align-self-center">
-                                <h2 class="h1 mb-0">50</h2>
+                                <h2 class="h1 mb-0">{{ $users }}</h2>
                             </div>
                         </div>
                     </div>
@@ -57,8 +57,8 @@
                                 <i class="fas fa-pencil-alt text-info fa-3x"></i>
                             </div>
                             <div class="text-end">
-                                <h3>40</h3>
-                                <p class="mb-0">Clients</p>
+                                <h3>{{ $clients }}</h3>
+                                <p class="mb-0">Client(s)</p>
                             </div>
                         </div>
                     </div>
@@ -72,8 +72,8 @@
                                 <i class="far fa-comment-alt text-warning fa-3x"></i>
                             </div>
                             <div class="text-end">
-                                <h3>10</h3>
-                                <p class="mb-0">Therapists</p>
+                                <h3>{{ $therapists }}</h3>
+                                <p class="mb-0">Therapist(s)</p>
                             </div>
                         </div>
                     </div>

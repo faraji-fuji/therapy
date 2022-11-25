@@ -55,7 +55,7 @@
                         <li class="nav-item"> <a class="nav-link btn-link" href="{{ route('profile') }}" aria-controls="#picker-editor">My Profile</a> </li>
 
                         @if(Auth::user()->is_admin)
-                        <li class="nav-item"> <a class="nav-link btn-link" href="{{ route('admin') }}" aria-controls="#picker-editor">Dashboard</a> </li>
+                        <li class="nav-item"> <a class="nav-link btn-link" href="{{ route('admin.index') }}" aria-controls="#picker-editor">Dashboard</a> </li>
 
                         @endif
                         @endauth
