@@ -24,19 +24,16 @@
 </head>
 
 <body class="m-0 p-0">
-    <section class=" pt-0">
-
+    <section class="pt-0">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm gradient-custom">
             <!-- Container wrapper -->
             <div class="container-fluid">
                 <div class="d-flex">
-
                     <!-- Toggle button -->
                     <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-bars"></i>
                     </button>
-
                     <!-- Navbar brand -->
                     <a class="navbar-brand ms-3" href="{{ route('index') }}">
                         <i class="fas fa-laptop-medical text-primary" aria-controls="#picker-editor"></i>
@@ -44,7 +41,6 @@
                 </div>
                 <!-- Collapsible wrapper -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
                     <!-- Left links -->
                     <ul class="navbar-nav me-auto mb-2 ms-2 ps-1 ms-lg-0 ps-lg-0 mb-lg-0">
                         <li class="nav-item"> <a class="nav-link btn-link" href="{{ route('index') }}" aria-controls="#picker-editor">Teletherapy</a> </li>
@@ -53,17 +49,12 @@
                         <li class="nav-item"> <a class="nav-link btn-link" href="index.php#contactUs" aria-controls="#picker-editor">Contact Us</a> </li>
                         @auth
                         <li class="nav-item"> <a class="nav-link btn-link" href="{{ route('profile') }}" aria-controls="#picker-editor">My Profile</a> </li>
-
                         @if(Auth::user()->is_admin)
                         <li class="nav-item"> <a class="nav-link btn-link" href="{{ route('admin.index') }}" aria-controls="#picker-editor">Dashboard</a> </li>
-
                         @endif
                         @endauth
                     </ul>
-                    <!-- Left links -->
                 </div>
-                <!-- Collapsible wrapper -->
-
                 <!-- Right elements -->
                 <div class="d-flex align-items-center">
                     <!-- Display links if user is guest -->
@@ -80,11 +71,8 @@
                     </form>
                     @endauth
                 </div>
-                <!-- Right elements -->
             </div>
-            <!-- Container wrapper -->
         </nav>
-        <!-- Navbar -->
     </section>
     <main>
         {{ $slot }}
@@ -103,14 +91,6 @@
             <p class="text-center text-muted">&copy; 2022 Teletherapy</p>
         </footer>
     </div>
-    <!-- Section: Footer -->
-
-    <!-- google calendar api custom script -->
-    <!-- @vite(['resources/js/googleCalendarApi.js']) -->
-
-    <!-- google calendar api scripts -->
-    <!-- <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script> -->
-    <!-- <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script> -->
 </body>
 
 </html>

@@ -26,8 +26,6 @@ class DashboardController extends Controller
 
         // Sessions
 
-
-
         // Complete Sessions
 
         // Pending Sessions

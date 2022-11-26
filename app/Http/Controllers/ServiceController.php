@@ -50,7 +50,7 @@ class ServiceController extends Controller
         $path = request('image')->store('serviceImageCover', 'public');
 
         // fit image
-        $image = Image::make(public_path("storage/{$path}"))->fit(3200, 1800);
+        $image = Image::make(public_path("storage/{$path}"))->fit(2497, 971);
         $image->save();
 
         Service::create([
