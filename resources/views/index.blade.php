@@ -2,7 +2,7 @@
     <!-- Section: Call to action -->
     <section class="mb-5">
         <!-- Background image -->
-        <div class="p-5 text-center bg-image" style="background-image: url(&quot;https://images.unsplash.com/photo-1573497491208-6b1acb260507?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=Mnw5NjI0M3wwfDF8c2VhcmNofDN8fHRoZXJhcHl8ZW58MHx8fHwxNjYxMjQzNzky&amp;ixlib=rb-1.2.1&amp;q=80&amp;w=1080&quot;); height: 500px; background-size: cover; background-position: 50% 50%; background-color: rgba(0, 0, 0, 0);" aria-controls="#picker-editor"></div>
+        <div class="p-5 text-center bg-image" style="background-image: url(/storage/images/christina-wocintechchat-com-LQ1t-8Ms5PY-unsplash.jpg); height: 500px; background-size: cover; background-position: 50% 50%; background-color: rgba(0, 0, 0, 0);" aria-controls="#picker-editor"></div>
         <!-- Background image -->
         <div class="container">
             <div class="card mx-4 mx-md-5 text-center shadow-5-strong" style=" margin-top: -170px; background: hsla(0, 0%, 100%, 0.5); backdrop-filter: blur(30px); ">
@@ -91,9 +91,9 @@
         </style>
 
         <!-- Background image -->
-        <div class="p-5 bg-image" style="background-image: url(&quot;https://images.unsplash.com/photo-1493836512294-502baa1986e2?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=Mnw5NjI0M3wwfDF8c2VhcmNofDJ8fHRoZXJhcHl8ZW58MHx8fHwxNjYxMjQzNzky&amp;ixlib=rb-1.2.1&amp;q=80&amp;w=1080&quot;); height: 300px; background-size: cover; background-position: 50% 50%;" aria-controls="#picker-editor"></div>
+        <div class="p-5 bg-image" style="background-image: url(/storage/images/pawel-czerwinski--0xCCPIbl3M-unsplash.jpg); height: 400px; background-size: cover; background-position: 50% 50%;" aria-controls="#picker-editor"></div>
 
-        <div class="card mx-4 mx-md-5 shadow-5-strong" style=" margin-top: -100px; background: hsla(0, 0%, 100%, 0.8); backdrop-filter: blur(30px); ">
+        <div class="card mx-4 mx-md-5 shadow-5-strong" style=" margin-top: -150px; background: hsla(0, 0%, 100%, 0.8); backdrop-filter: blur(30px); ">
             <div class="card-body py-5 px-md-5">
                 <h2 class="mb-5">Need Help? Leave us a Message.</h2>
                 <div class="row mb-5">
@@ -106,11 +106,13 @@
                         <hr class="divider-vertical d-none d-lg-block">
                     </div>
                     <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 position-relative"> <i class="fas fa-phone fa-3x text-primary mb-4" aria-controls="#picker-editor"></i>
-                        <h6 class="fw-normal mb-0">+2547 000 000</h6>
+                        <h6 class="fw-normal mb-0">
+                            <a href="tel:+2547s000000">+2547 000 000</a>
+                        </h6>
                         <hr class="divider-vertical d-none d-lg-block">
                     </div>
                     <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 position-relative"> <i class="fas fa-envelope fa-3x text-primary mb-4" aria-controls="#picker-editor"></i>
-                        <h6 class="fw-normal mb-0">support@teletherapy.com</h6>
+                        <h6 class="fw-normal mb-0"> <a href="mailto:support@teletherapy.com">support@teletherapy.com</a></h6>
                     </div>
                 </div>
                 <div class="row d-flex justify-content-center">
